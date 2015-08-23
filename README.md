@@ -6,10 +6,10 @@ For more detailed descriptions of each variable, please see CodeBook.md (https:/
 
 The first step in this script is to load the dplyr and reshape packages, as functions from both packages are used in this script.
 
-Next, we read in the txt file that contains the names of each measurement variable in the raw data (features.txt), and keep only mean and standard deviation measurements in a new character vector called keep_features.
+Next, we read in the txt file that contains the names of each measurement variable in the raw data (features.txt), and keep only mean and standard deviation measurements in a new data.frame called keep_features, which includes the column numbers for each column we want to keep in the measurement datasets (X_train.txt and X_test.txt) as well as the corresponding column name.
 
-Then, we read in the activity_labels.txt files, which matches the numerical code for each activity to it's description (e.g., 1 corresponds to "WALKING"), and then we name the column with that contains the descriptions of each activity "labels".
+Then, we read in the activity_labels.txt files, which matches the numerical code for each activity to it's description (e.g., 1 corresponds to "WALKING"), and then we name the column with that contains the descriptions of each activity "labels", all stored in a data frame called act_labels.
 
-In the next set of steps, we read and clean the train and test sets, which contain the actual measurement data for each subject.
+In the next set of steps, we read and clean the training sets, which contain the actual measurement data for each subject. When reading in the X_train.txt, which contains the measurements for each subject, we keep only only the columns that remain in the keep_features data.frame created earlier. We then read in the Y_train.txt file, which contains the numerical activity labels for each measurement, and then effectively replace the numerical labels with their descriptions by merging the act_labels data frame with the Y_train.txt file.
 
 When reading in gacd_tidy_data.txt, use read.table and set header = TRUE so the column names read in correctly.
