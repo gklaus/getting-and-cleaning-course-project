@@ -10,6 +10,12 @@ Next, we read in the txt file that contains the names of each measurement variab
 
 Then, we read in the activity_labels.txt files, which matches the numerical code for each activity to it's description (e.g., 1 corresponds to "WALKING"), and then we name the column with that contains the descriptions of each activity "labels", all stored in a data frame called act_labels.
 
-In the next set of steps, we read and clean the training sets, which contain the actual measurement data for each subject. When reading in the X_train.txt, which contains the measurements for each subject, we keep only only the columns that remain in the keep_features data.frame created earlier. We then read in the Y_train.txt file, which contains the numerical activity labels for each measurement, and then effectively replace the numerical labels with their descriptions by merging the act_labels data frame with the Y_train.txt file.
+In the next set of steps, we read and clean the training sets, which contain the actual measurement data for each subject. When reading in the X_train.txt, which contains the measurements for each subject, we keep only only the columns that remain in the keep_features data.frame created earlier. The resulting data is stored in a data frame called x_train. We then read in the Y_train.txt file, which contains the numerical activity labels for each measurement, and then effectively replace the numerical labels with their descriptions by merging the act_labels data frame with the Y_train.txt file, for which the resulting data is stored in a data frame called y_train. Then we read in the subject_train.txt file, which contains the subject ID numbers for each measurement, into a vector called subj_train. Then we combine the columns in x_train, y_train, and subj_train to for train_set.
+
+The steps above can be repeated with the corresponding test datasets to for test_set.
+
+Once training_set and test_set have been created, we use rbind to append the two data frames together to form a complete set of all of the training and test data in a new data frame called data_set.
+
+We can then reshape data_set to create a long form dataset that contains the average mean and standard deviation of each measurement for each combination of subject and activity. To do this, we first melt data_set and store the results in a data frame called data_melt. In the final step, we cast the data_melt such that it returns the averages of each measurement across each combination of subject and activity.
 
 When reading in gacd_tidy_data.txt, use read.table and set header = TRUE so the column names read in correctly.
