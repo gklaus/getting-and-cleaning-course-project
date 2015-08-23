@@ -16,6 +16,6 @@ The steps above can be repeated with the corresponding test datasets to for test
 
 Once training_set and test_set have been created, we use rbind to append the two data frames together to form a complete set of all of the training and test data in a new data frame called data_set.
 
-We can then reshape data_set to create a long form dataset that contains the average mean and standard deviation of each measurement for each combination of subject and activity. To do this, we first melt data_set and store the results in a data frame called data_melt. In the final step, we cast the data_melt such that it returns the averages of each measurement across each combination of subject and activity.
+We can then reshape data_set to create a long form dataset that contains the average mean and standard deviation of each measurement for each combination of subject and activity. To do this, we first melt data_set and store the results in a data frame called data_melt. In the final steps, we cast the data_melt such that it returns the averages of each measurement across each combination of subject and activity, and then write the file in a txt file called gacd_tidy_data.txt.
 
 When reading in gacd_tidy_data.txt, use read.table and set header = TRUE so the column names read in correctly.
